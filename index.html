@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet - Group Chat for Everyone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="starter-code/assets/favicon-32x32.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --color-primary-blue: #4d96a9;
+            --color-primary-purple: #855fb1;
+            --color-accent-blue: #8fe3f9;
+            --color-accent-purple: #d9b8ff;
+            --color-text-dark: #28283d;
+            --color-text-gray: #87879d;
+            --color-background: #fafafa;
+            --color-border: #d1d1df;
+            --font-family: 'Red Hat Display', sans-serif;
+            --fs-xxl: 4rem;    /* 64px */
+            --fs-xl: 3rem;     /* 48px */
+            --fs-lg: 2.5rem;   /* 40px */
+            --fs-md: 2.25rem;  /* 36px */
+            --fs-base-lg: 2rem;/* 32px */
+            --fs-base: 1.5rem; /* 24px */
+            --fs-sm: 1.125rem; /* 18px */
+            --fs-xs: 1rem;     /* 16px */
+            --fs-2xs: 0.875rem;/* 14px */
+            --fs-3xs: 0.75rem; /* 12px */
+        }
+
+     
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+            background-color: var(--color-background);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-icon {
+            display: flex;
+            gap: 2px;
+        }
+
+        .logo-circle {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+        }
+
+        .logo-circle.blue {
+            background-color: var(--color-primary-blue);
+        }
+
+        .logo-circle.purple {
+            background-color: var(--color-primary-purple);
+        }
+
+        .logo-text {
+            font-weight: 900;
+            font-size: var(--fs-xs);
+            color: var(--color-text-dark);
+        }
+        .hero-title {
+            font-size: var(--fs-xxl);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--color-text-dark);
+        }
+        .hero-description {
+            font-size: var(--fs-sm);
+            font-weight: 500;
+            color: var(--color-text-gray);
+            line-height: 1.5;
+        }
+        .btn {
+            font-size: var(--fs-xs);
+        }
+        .section-circle {
+            font-size: var(--fs-xs);
+        }
+        .content-label {
+            font-size: var(--fs-xs);
+            font-weight: 900;
+            color: var(--color-primary-blue);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .content-title {
+            font-size: var(--fs-lg);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            color: var(--color-text-dark);
+        }
+        .content-description {
+            font-size: var(--fs-sm);
+            font-weight: 500;
+            color: var(--color-text-gray);
+            line-height: 1.5;
+        }
+        .footer-title {
+            font-size: var(--fs-lg);
+            font-weight: 900;
+            line-height: 1.1;
+        }
+        .footer-description {
+            font-size: var(--fs-sm);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 56px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1120px;
+            margin: 0 auto;
+            gap: 80px;
+        }
+
+        .hero-image-left,
+        .hero-image-right {
+            max-width: 100%;
+            height: 360px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .hero-tablet-image {
+            display: none;
+            width: 100%;
+            max-width: 768px;
+            height: auto;
+        }
+
+        .hero-text {
+            text-align: center;
+            flex: 1;
+            max-width: 448px;
+            display: grid;
+            gap: 32px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            border: none;
+            border-radius: 29px;
+            font-family: var(--font-family);
+            font-weight: 900;       
+            cursor: pointer;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        .btn-blue {
+            background-color: var(--color-primary-blue);
+            color: var(--color-background);
+        }
+
+        .btn-purple {
+            background-color: var(--color-primary-purple);
+            color: var(--color-background);
+        }
+
+        .btn-version {
+            color: var(--color-accent-blue);
+        }
+
+        .btn-purple .btn-version {
+            color: var(--color-accent-purple);
+        }
+
+        /* Section Numbers */
+        .section-number {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .section-line {
+            width: 1px;
+            height: 80px;
+            background-color: var(--color-border);
+        }
+
+        .section-circle {
+            width: 56px;
+            height: 56px;
+            border: 1px solid var(--color-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-background);
+            font-weight: 900;
+            color: var(--color-text-gray);
+            font-size: var(--fs-label-desktop);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 56px 0;
+        }
+
+        .content-wrapper {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Image Collage */
+        .image-collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 80px 0 0 0;
+            width: 100%;
+            
+        }
+
+        .collage-image {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1;
+        }
+
+        /* Content Section */
+        .content-section {
+            text-align: center;
+            max-width: 544px;
+            margin: 80px 0;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            position: relative;
+            background-image: url('starter-code/assets/desktop/image-footer.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .footer-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            place-items: center;
+            padding: 112px 80px;
+            color: var(--color-background);
+            max-width: 1120px;
+            align-content: center;
+        }
+
+        .footer-section-number {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-title {
+                font-size: var(--fs-xl);
+            }
+            .content-title, .footer-title {
+                font-size: var(--fs-md);
+            }
+            .hero-description, .content-description, .footer-description {
+                font-size: var(--fs-xs);
+            }
+            .logo-text, .section-circle, .content-label {
+                font-size: var(--fs-2xs);
+            }
+            .btn {
+                font-size: var(--fs-xs);
+            }
+            .hero-content {
+                grid-template-columns: 1fr;
+                justify-content: center;
+                justify-items: center;
+            }
+            .hero-image-left,
+            .hero-image-right {
+                display: none;
+            }
+            .hero-tablet-image {
+                display: block;
+                order: -1;
+            }
+            .hero-text {
+                order: 1;
+            }
+            .image-collage {
+                gap: 1.5rem;
+            }
+            
+        }
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: var(--fs-base-lg);
+            }
+            .content-title, .footer-title {
+                font-size: var(--fs-base);
+            }
+            .hero-description, .content-description, .footer-description {
+                font-size: var(--fs-xs);
+            }
+            .logo-text, .section-circle, .content-label {
+                font-size: var(--fs-3xs);
+            }
+            .btn {
+                font-size: var(--fs-xs);
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .hero {
+                padding: 60px 0;
+            }
+            
+            .hero-content {
+                gap: 72px;
+            }
+            
+            .hero-text {
+                gap: 24px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .btn {
+                width: 193px;
+                justify-content: center;
+            }
+            
+            .footer-content-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 132px 64px;
+                text-align: center;
+            }
+            .footer-cta {
+                background-image: url('starter-code/assets/tablet/image-footer.jpg');
+               
+            }
+        }
+        @media (max-width: 600px) {
+            .image-collage {
+                gap: 1rem;
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: var(--fs-base);
+            }
+            .content-title, .footer-title {
+                font-size: var(--fs-base);
+            }
+            .hero-description, .content-description, .footer-description {
+                font-size: var(--fs-xs);
+            }
+            .logo-text, .section-circle, .content-label {
+                font-size: var(--fs-3xs);
+            }
+            .btn {
+                font-size: var(--fs-xs);
+            }
+            .hero-content {
+                gap: 48px;
+            }
+            .footer-cta {
+                background-image: url('starter-code/assets/mobile/image-footer.jpg');
+            }
+           
+            .footer-content-grid {
+                padding: 64px 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">
+                    <div class="logo-circle blue"></div>
+                    <div class="logo-circle purple"></div>
+                </div>
+                <span class="logo-text">meet</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <img src="starter-code/assets/desktop/image-hero-left.png" alt="People in video call" class="hero-image-left">
+                <div class="hero-text">
+                    <h1 class="hero-title">Group Chat<br>for Everyone</h1>
+                    <p class="hero-description">Meet makes it easy to connect with others face-to-face virtually and collaborate across any device.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-blue">
+                            Download
+                            <span class="btn-version">v1.3</span>
+                        </a>
+                        <a href="#" class="btn btn-purple">
+                            What is it?
+                            <span class="btn-version">v1.3</span>
+                        </a>
+                    </div>
+                </div>
+                <img src="starter-code/assets/desktop/image-hero-right.png" alt="People in video call" class="hero-image-right">
+                <img src="starter-code/assets/tablet/image-hero.png" alt="People in video call" class="hero-tablet-image">
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Section Number 01 -->
+                <div class="section-number">
+                    <div class="section-line"></div>
+                    <div class="section-circle">01</div>
+                </div>
+                <!-- Image Collage -->
+                <div class="image-collage">
+                    <img src="starter-code/assets/desktop/image-woman-in-videocall.jpg" alt="Woman in video call" class="collage-image">
+                    <img src="starter-code/assets/desktop/image-women-videochatting.jpg" alt="Women video chatting" class="collage-image">
+                    <img src="starter-code/assets/desktop/image-men-in-meeting.jpg" alt="Men in meeting" class="collage-image">
+                    <img src="starter-code/assets/desktop/image-man-texting.jpg" alt="Man texting" class="collage-image">
+                </div>
+
+                <!-- Content Section -->
+                <div class="content-section">
+                    <p class="content-label">Built for modern use</p>
+                    <h2 class="content-title">Smarter meetings, all in one place</h2>
+                    <p class="content-description">Send messages, share files, show your screen, and record your meetings — all in one workspace. Control who can join with invite-only team access, data encryption, and data export.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section Number 02 -->
+    
+
+    <!-- Footer CTA -->
+    <footer class="footer-cta">
+        <div class="section-number footer-section-number">
+            <div class="section-line"></div>
+            <div class="section-circle">02</div>
+        </div>
+        <div class="footer-content-grid">
+            
+                <h2 class="footer-title">Experience more together</h2>
+           
+            
+                <p class="footer-description">Stay connected with reliable HD meetings and unlimited one-on-one and group video sessions.</p>
+           
+            
+                <a href="#" class="btn btn-purple">
+                    Download
+                    <span class="btn-version">v1.3</span>
+                </a>
+           
+        </div>
+    </footer>
+</body>
+</html> 
