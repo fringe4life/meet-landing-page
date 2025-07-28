@@ -56,40 +56,19 @@
         .nav {
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 40px 0;
-            background-color: var(--color-background);
+            align-items: flex-end;
+            padding-top: 83px;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .nav img {
+            width: 118px;
+            height: 28px;
+            contain: strict
         }
 
-        .logo-icon {
-            display: flex;
-            gap: 2px;
-        }
-
-        .logo-circle {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-        }
-
-        .logo-circle.blue {
-            background-color: var(--color-primary-blue);
-        }
-
-        .logo-circle.purple {
-            background-color: var(--color-primary-purple);
-        }
-
-        .logo-text {
-            font-weight: 900;
-            font-size: var(--fs-xs);
-            color: var(--color-text-dark);
+        /* Hero Section */
+        .hero {
+            padding-bottom: 56px;
         }
         .hero-title {
             font-size: var(--fs-xxl);
@@ -103,11 +82,72 @@
             color: var(--color-text-gray);
             line-height: 1.5;
         }
-        .btn {
-            font-size: var(--fs-xs);
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            align-items: center;
+            justify-content: space-between;
+            gap: 80px;
+            overflow: hidden;
         }
-        .section-circle {
-            font-size: var(--fs-xs);
+        .hero-image-left,
+        .hero-image-right {
+            max-width: 100%;
+            height: 303px;
+            border-radius: 8px;
+            object-fit: contain;
+            position: relative;
+        }
+        .hero-image-left {
+            align-self: flex-start;
+            right: 25px;
+        }
+        .hero-image-right {
+            align-self: flex-end;
+left            : 40px;
+        }
+        .hero-tablet-image {
+            display: none;
+            width: 100%;
+            max-width: 768px;
+            height: auto;
+        }
+        .hero-text {
+            text-align: center;
+            display: grid;
+            row-gap: 32px;
+        }
+        .hero-title {
+            font-size: var(--fs-xxl);
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--color-text-dark);
+            text-align: center;
+            vertical-align: top;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 56px 0;
+            margin: 0 160px;
+        }
+        .content-wrapper {
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* Content Section */
+        .content-section {
+            text-align: center;
+            max-width: 544px;
+            margin: 80px 0;
         }
         .content-label {
             font-size: var(--fs-xs);
@@ -130,6 +170,42 @@
             color: var(--color-text-gray);
             line-height: 1.5;
         }
+        /* Image Collage */
+        .image-collage {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 80px 0 0 0;
+            width: 100%;
+        }
+        .collage-image {
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1;
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Footer CTA */
+        .footer-cta {
+            position: relative;
+            background-image: url('starter-code/assets/desktop/image-footer.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: var(--color-primary-blue);
+            background-blend-mode: multiply;
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .footer-content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            place-items: center;
+            padding: 112px 80px;
+            color: var(--color-background);
+            place-content: center;
+        }
         .footer-title {
             font-size: var(--fs-lg);
             font-weight: 900;
@@ -140,51 +216,12 @@
             font-weight: 500;
             line-height: 1.5;
         }
-
-        /* Hero Section */
-        .hero {
-            padding: 56px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0 auto;
-            gap: 80px;
-        }
-
-        .hero-image-left,
-        .hero-image-right {
-            max-width: 100%;
-            height: 360px;
-            border-radius: 8px;
-            object-fit: contain;
-        }
-
-        .hero-tablet-image {
-            display: none;
-            width: 100%;
-            max-width: 768px;
-            height: auto;
-        }
-
-        .hero-text {
-            text-align: center;
-            flex: 1;
-            max-width: 448px;
-            display: grid;
-            gap: 32px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
+        .footer-section-number {
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
         }
 
         /* Buttons */
@@ -251,72 +288,6 @@
             font-size: var(--fs-label-desktop);
         }
 
-        /* Main Content */
-        .main-content {
-            padding: 56px 0;
-        }
-
-        .content-wrapper {
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Image Collage */
-        .image-collage {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin: 80px 0 0 0;
-            width: 100%;
-            
-        }
-
-        .collage-image {
-            width: 100%;
-            border-radius: 8px;
-            object-fit: cover;
-            aspect-ratio: 1;
-        }
-
-        /* Content Section */
-        .content-section {
-            text-align: center;
-            max-width: 544px;
-            margin: 80px 0;
-        }
-
-        /* Footer CTA */
-        .footer-cta {
-            position: relative;
-            background-image: url('starter-code/assets/desktop/image-footer.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: var(--color-primary-blue);
-            background-blend-mode: multiply;
-           max-width: 1120px;
-           margin: 0 auto;
-        }
-
-        .footer-content-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            place-items: center;
-            padding: 112px 80px;
-            color: var(--color-background);
-            place-content: center;
-        }
-
-        .footer-section-number {
-            position: absolute;
-            top: -10%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-        }
-
         @media (max-width: 1024px) {
             .hero-title {
                 font-size: var(--fs-xl);
@@ -327,7 +298,7 @@
             .hero-description, .content-description, .footer-description {
                 font-size: var(--fs-xs);
             }
-            .logo-text, .section-circle, .content-label {
+            .section-circle, .content-label {
                 font-size: var(--fs-2xs);
             }
             .btn {
@@ -355,6 +326,10 @@
             
         }
         @media (max-width: 768px) {
+
+            .nav {
+                padding-top: 51px;
+            }
             .hero-title {
                 font-size: var(--fs-base-lg);
             }
@@ -364,7 +339,7 @@
             .hero-description, .content-description, .footer-description {
                 font-size: var(--fs-xs);
             }
-            .logo-text, .section-circle, .content-label {
+            .section-circle, .content-label {
                 font-size: var(--fs-3xs);
             }
             .btn {
@@ -387,6 +362,10 @@
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+            }
+
+            .main-content{
+                margin: 40px 0;
             }
             .btn {
                 width: 193px;
@@ -420,7 +399,7 @@
             .hero-description, .content-description, .footer-description {
                 font-size: var(--fs-xs);
             }
-            .logo-text, .section-circle, .content-label {
+            .section-circle, .content-label {
                 font-size: var(--fs-3xs);
             }
             .btn {
@@ -428,6 +407,10 @@
             }
             .hero-content {
                 gap: 48px;
+            }
+
+            .main-content {
+                margin: 32px 0;
             }
             .footer-cta {
                 background-image: url('starter-code/assets/mobile/image-footer.jpg');
@@ -442,15 +425,7 @@
 <body>
     <!-- Navigation -->
     <nav class="nav">
-        <div class="container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <div class="logo-circle blue"></div>
-                    <div class="logo-circle purple"></div>
-                </div>
-                <span class="logo-text">meet</span>
-            </div>
-        </div>
+        <img src="starter-code/assets/logo.svg" alt="Meet Logo" class="logo">
     </nav>
 
     <!-- Hero Section -->
@@ -459,7 +434,7 @@
             <div class="hero-content">
                 <img src="starter-code/assets/desktop/image-hero-left.png" alt="People in video call" class="hero-image-left">
                 <div class="hero-text">
-                    <h1 class="hero-title">Group Chat<br>for Everyone</h1>
+                    <h1 class="hero-title">Group Chat<br />for Everyone</h1>
                     <p class="hero-description">Meet makes it easy to connect with others face-to-face virtually and collaborate across any device.</p>
                     <div class="hero-buttons">
                         <a href="#" class="btn btn-blue">
