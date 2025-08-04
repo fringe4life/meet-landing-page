@@ -112,6 +112,11 @@ body {
     font-weight: 500;
     color: var(--color-text-gray);
     line-height: 1.5;
+    max-inline-size: 60ch;
+    text-align: center;
+    text-wrap: balance;
+    justify-self: center;
+
 }
 
 /* Shared Color Properties */
