@@ -184,35 +184,34 @@ body {
 
 .hero-tablet-image {
     display: none;
-    max-inline-size: var(--size-13xl);
+    max-inline-size: 110%;
+    overflow: hidden;
     block-size: auto;
 }
 
 .hero-text {
     text-align: center;
     display: grid;
-    --_text-gap: var(--spacing-xl);
-    gap: var(--_text-gap);
-    --_text-margin: var(--spacing-lg);
-    margin-block: var(--_text-margin) 0;
+    gap: var(--_text-gap, var(--spacing-xl));
+    margin-block: var(--_text-margin, var(--spacing-lg)) 0;
     grid-column: hero-header;
 }
 
 .hero-buttons {
     display: flex;
-    gap: var(--spacing-sm);
     justify-content: center;
     flex-wrap: wrap;
+    gap: var(--spacing-sm);
 }
 
 /* Main Content */
 .main-content {
-    --_content-padding: var(--size-hero-padding);
+    /* --_content-padding: var(--size-hero-padding);
     --_content-margin: var(--size-9xl);
-    --_margin-block: var(--size-hero-padding) var(--spacing-3xl);
-    padding-block: var(--_content-padding) 0;
-    margin-inline: var(--_content-margin);
-    margin-block: var(--_margin-block);
+    --_margin-block: var(--size-hero-padding) var(--spacing-3xl); */
+    padding-block: var(--_content-padding, var(--size-hero-padding)) 0;
+    margin-inline: var(--_content-margin, var(--size-9xl));
+    margin-block: var(--_margin-block, var(--size-hero-padding) var(--spacing-3xl));
 }
 
 .content-wrapper {
@@ -251,7 +250,7 @@ body {
 .image-collage {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
+    gap: var(--_collage-gap, var(--spacing-lg));
     margin-block-start: var(--spacing-2xl);
     inline-size: 100%;
 }
@@ -413,7 +412,7 @@ body {
     }
     
     .image-collage {
-        gap: var(--spacing-md);
+        --_collage-gap: var(--spacing-md);
     }
 
     .footer-content-grid {
@@ -488,7 +487,7 @@ body {
 
 @media (max-width: 600px) {
     .image-collage {
-        gap: var(--spacing-sm);
+        --_collage-gap: var(--spacing-sm);
         grid-template-columns: repeat(2, 1fr);
     }
 }
@@ -521,8 +520,8 @@ body {
     }
 
     .main-content {
-        --_content-margin: var(--spacing-xl);
-        --_margin-block: var(--spacing-xl) var(--spacing-2xl);
+        --_content-margin: 0;
+        --_margin-block: 0;
     }
     
     .footer-cta {
